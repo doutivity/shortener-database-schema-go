@@ -1,13 +1,5 @@
-# URL shortener database schema
-
-# Support Ukraine 🇺🇦
-- Help Ukraine via [SaveLife fund](https://savelife.in.ua/en/donate-en/)
-- Help Ukraine via [Dignitas fund](https://dignitas.fund/donate/)
-- Help Ukraine via [National Bank of Ukraine](https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi)
-- More info on [war.ukraine.ua](https://war.ukraine.ua/) and [MFA of Ukraine](https://twitter.com/MFA_Ukraine)
-
-# Schema
-```sql
+-- +goose Up
+-- +goose StatementBegin
 CREATE TABLE users
 (
     id         BIGINT PRIMARY KEY,
@@ -29,7 +21,17 @@ CREATE TABLE urls
     updated_at      TIMESTAMP NOT NULL,
     updated_by      BIGINT    NOT NULL
 );
-```
 
-# Examples
-* [Polr](https://drawsql.app/templates/polr)
+-- @TODO
+-- 1 history of destination_url change
+-- 2 clicks stats include destination_url_id
+-- 3 locations where placed short URL or QR Code
+-- 4 custom labels created by user
+
+-- +goose StatementEnd
+
+-- +goose Down
+-- +goose StatementBegin
+DROP TABLE urls;
+DROP TABLE users;
+-- +goose StatementEnd

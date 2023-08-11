@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: "shortener-database-schema-go-app"
+    image: golang:1.21.0-alpine
+    working_dir: /go/src/github.com/doutivity/research-online-postgres-go
+    volumes:
+      - .:/go/src/github.com/doutivity/shortener-database-schema-go
+    command: "sleep 1d"
+    depends_on:
+      - postgres1
+
+  postgres1:
+    container_name: "shortener-database-schema-go-postgres-1"
+    image: postgres:15.3
+    environment:
+      POSTGRES_DB: "pg1_database"
+      POSTGRES_USER: "pg1_user"
+      POSTGRES_PASSWORD: "pg1_password"
+    ports:
+      - "5432:5432"
