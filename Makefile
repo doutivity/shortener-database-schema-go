@@ -12,14 +12,14 @@ test:
 bench:
 	docker exec shortener-database-schema-go-app go test ./... -v -run=$$^ -bench=. -benchmem -benchtime=1000x
 
-go-test-run:
+docker-go-test:
 	docker exec shortener-database-schema-go-app go version
 	docker exec shortener-database-schema-go-app go run main.go
 
-postgres-test-run:
+docker-pg-test:
 	docker exec shortener-database-schema-go-postgres psql -U pg1_user -d pg1_database -c "SELECT VERSION();"
 
-init-test: env-up go-test-run postgres-test-run test env-down
+init-test: env-up docker-go-test docker-pg-test test env-down
 
 generate-sqlc:
 	sqlc generate

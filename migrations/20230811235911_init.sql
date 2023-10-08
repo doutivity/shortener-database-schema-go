@@ -12,7 +12,7 @@ CREATE TABLE users
 CREATE TABLE urls
 (
     id              BIGSERIAL NOT NULL PRIMARY KEY,
-    short_url       VARCHAR   NOT NULL,
+    short_code      VARCHAR   NOT NULL UNIQUE,
     destination_url VARCHAR   NOT NULL,
     title           VARCHAR   NOT NULL,
     description     VARCHAR   NOT NULL,

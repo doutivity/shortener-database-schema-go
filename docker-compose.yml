@@ -4,12 +4,12 @@ services:
   app:
     container_name: "shortener-database-schema-go-app"
     image: golang:1.21.0-alpine
-    working_dir: /go/src/github.com/doutivity/research-online-postgres-go
+    working_dir: /go/src/github.com/doutivity/shortener-database-schema-go
     volumes:
       - .:/go/src/github.com/doutivity/shortener-database-schema-go
     command: "sleep infinity"
     depends_on:
-      - postgres1
+      - postgres
 
   postgres:
     container_name: "shortener-database-schema-go-postgres"
