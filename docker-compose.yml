@@ -7,13 +7,13 @@ services:
     working_dir: /go/src/github.com/doutivity/research-online-postgres-go
     volumes:
       - .:/go/src/github.com/doutivity/shortener-database-schema-go
-    command: "sleep 1d"
+    command: "sleep infinity"
     depends_on:
       - postgres1
 
-  postgres1:
-    container_name: "shortener-database-schema-go-postgres-1"
-    image: postgres:15.3
+  postgres:
+    container_name: "shortener-database-schema-go-postgres"
+    image: postgres:16.0-alpine
     environment:
       POSTGRES_DB: "pg1_database"
       POSTGRES_USER: "pg1_user"

@@ -2,7 +2,7 @@
 -- +goose StatementBegin
 CREATE TABLE users
 (
-    id         BIGINT PRIMARY KEY,
+    id         BIGSERIAL NOT NULL PRIMARY KEY,
     created_at TIMESTAMP NOT NULL,
     created_by BIGINT    NOT NULL,
     updated_at TIMESTAMP NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE users
 
 CREATE TABLE urls
 (
-    id              BIGINT PRIMARY KEY,
+    id              BIGSERIAL NOT NULL PRIMARY KEY,
     short_url       VARCHAR   NOT NULL,
     destination_url VARCHAR   NOT NULL,
     title           VARCHAR   NOT NULL,
